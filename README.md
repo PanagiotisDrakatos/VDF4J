@@ -20,7 +20,7 @@ network environment.
 
 # VDF4J
 
-<a href="">![build-status](https://ci.appveyor.com/api/projects/status/github/PanagiotisDrakatos/VDF4J?branch=master&svg=true)</a>
+<a href="">![build-status](https://ci.appveyor.com/api/projects/status/github/PanagiotisDrakatos/vdf4j?branch=master&svg=true)</a>
 <a href="">[![Scc Count Badge](https://sloc.xyz/github/PanagiotisDrakatos/VDF4J/?category=lines)](https://github.com/PanagiotisDrakatos/VDF4J/)</a>
 <a href="">![GitHub Repo stars](https://img.shields.io/github/stars/PanagiotisDrakatos/VDF4J?style=flat&logoColor=green)</a>
 <a href="">![GitHub followers](https://img.shields.io/github/followers/PanagiotisDrakatos?style=flat&logo=green)</a>
@@ -45,28 +45,31 @@ network environment.
 
 1. [Introduction](#introduction)
 2. [What Is a Verifiable Delay Function (VDF)?](#what-is-a-verifiable-delay-function-vdf)
-3. [Java Example Code](#java-example-code)
-4. [Project Goals](#project-goals)
-4. [Directory Structure](#directory-structure)
-5. [Build & Run Instructions](#build--run-instructions)
-6. [Building Native Library](#building-native-library)
-6. [How It Works](#how-it-works)
+3. [Getting started](#Getting-started)
+4. [Java Example Code](#java-example-code)
+5. [Project Goals](#project-goals)
+6. [Directory Structure](#directory-structure)
+7. [Build & Run Instructions](#build--run-instructions)
+8. [Building Native Library](#building-native-library)
+9. [How It Works](#how-it-works)
     - [Core Concept](#core-concept)
     - [Computation Delay](#computation-delay)
     - [Proof Generation & Verification](#proof-generation--verification)
-7. [Limitations & Future Work](#limitations--future-work)
-8. .[Legal Warning](#legal-warning)
-9. [Support](#support)
-10. [Note](#note)
-11. [Contribute](#contribute)
-12. [Authors](#authors)
-13. [License](#license)
+10. [Limitations & Future Work](#limitations--future-work)
+11. .[Legal Warning](#legal-warning)
+12. [Support](#support)
+13. [Note](#note)
+14. [Contribute](#contribute)
+15. [Authors](#authors)
+16. [License](#license)
 
 ---
 
 ## Introduction
 
-**VDF4J** is a Java-based **Verifiable Delay Function** (VDF) implementation, developed primarily for **educational and research** purposes. VDFs require a predetermined amount of **sequential** time to compute yet are very fast to verify, making them attractive for use cases like **blockchain consensus**, **randomness beacons**, and **anti-front-running measures**.
+**VDF4J** is a Java-based **Verifiable Delay Function** (VDF) implementation, developed primarily for **educational and research** purposes for Adrestus cryptocurrency project.
+Part of the code is forked from previous libraries that failed to provide consistent and robust functionality, resulting in memory leaks and significant issues on the JVM.
+VDFs require a predetermined amount of **sequential** time to compute yet are very fast to verify, making them attractive for use cases like **blockchain consensus**, **randomness beacons**, and **anti-front-running measures**.
 
 ---
 
@@ -92,6 +95,33 @@ uses cryptographic checks that confirm the original
 computation was done correctly. By introducing a time delay during evaluation, VDFs prevent malicious actors from influencing output. The output cannot be differentiated from a random number until the final result is computed. See https://eprint.iacr.org/2018/712.pdf for more details.
 
 ---
+
+## Getting started
+
+[//]: # (The latest release is)
+
+[//]: # ([1.3.0]&#40;https://github.com/google/jimfs/releases/tag/v1.3.0&#41;.)
+
+[//]: # ()
+[//]: # (It is available in Maven Central as)
+
+[//]: # ([com.google.jimfs:jimfs:1.3.0]&#40;http://search.maven.org/#artifactdetails%7Ccom.google.jimfs%7Cjimfs%7C1.3.0%7Cjar&#41;:)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<dependency>)
+
+[//]: # (  <groupId>com.google.jimfs</groupId>)
+
+[//]: # (  <artifactId>jimfs</artifactId>)
+
+[//]: # (  <version>1.3.0</version>)
+
+[//]: # (</dependency>)
+
+[//]: # (```)
+
 ## Java Example Code 
 ```java
 public class ExamplesTest {
@@ -226,24 +256,24 @@ _src/main/resources_
 
 ### Select Packages
 
-1. i686-w64-mingw32-gcc: For 32-bit Windows applications. Not exist on packet manger run version command to check it on
+1. **i686-w64-mingw32-gcc**: For 32-bit Windows applications. Not exist on packet manger run version command to check it on
   cygwin
-2. x86_64-w64-mingw32-gcc: For 64-bit Windows applications. Not exist on packet manger run version command to check it on
+2. **x86_64-w64-mingw32-gcc**: For 64-bit Windows applications. Not exist on packet manger run version command to check it on
   cygwin
 
-3. mingw64-i686-gcc-g++ - The GNU Compiler Collection (C++ compiler). For 32-bit Windows applications.
-4. mingw64-x86_64-gcc-g++ - The GNU Compiler Collection (C++ compiler). For 64-bit Windows applications.
+3. **mingw64-i686-gcc-g++** - The GNU Compiler Collection (C++ compiler). For 32-bit Windows applications.
+4. **mingw64-x86_64-gcc-g++** - The GNU Compiler Collection (C++ compiler). For 64-bit Windows applications.
 
 5. install cygwin on setup make sure all this installed
-6. gcc-core - The GNU Compiler Collection (C compiler).
-7. gcc-g++ - The GNU Compiler Collection (C compiler).
-8. libgcc - The GNU Compiler Collection (C compiler).
-9. make - The GNU version of the 'make' utility.
-10. autoconf - A tool for automatically configuring source code.
-11. automake - A tool for automatically generating Makefile.in files.
-12. libtool - A generic library support script.
-13. m4 - A macro processing language.
-14. curl - A tool to transfer data from or to a server.
+6. **gcc-core** - The GNU Compiler Collection (C compiler).
+7. **gcc-g++** - The GNU Compiler Collection (C compiler).
+8. **libgcc** - The GNU Compiler Collection (C compiler).
+9. **make** - The GNU version of the 'make' utility.
+10. **autoconf** - A tool for automatically configuring source code.
+11. **automake** - A tool for automatically generating Makefile.in files.
+12. **libtool** - A generic library support script.
+13. **m4** - A macro processing language.
+14. **curl** - A tool to transfer data from or to a server.
 
 Add the following to your PATH environment variable
 
@@ -353,15 +383,7 @@ I'd really appreciate it!
 
 - [@panagiotisdrakatos](https://github.com/PanagiotisDrakatos)
 
-## License
 
-This project is distributed under the MIT license version 2.0 (see the LICENSE file in the project root).
-
-By submitting a pull request to this project, you agree to license your contribution under the MIT license version 2.0
-to this project.
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-=======
 # Contribute
 1. Fork it: git clone https://github.com/PanagiotisDrakatos/VDF4J.git
 2. Create your feature branch: git checkout -b my-new-feature

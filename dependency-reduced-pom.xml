@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.Adrestus.v1</groupId>
+  <groupId>com.security.adapter</groupId>
   <artifactId>VDF4J</artifactId>
   <name>VDF4J</name>
   <version>0.1.0</version>
   <description>Official Java implementation of the Verifiable Delay Function (VDF).</description>
-  <url>https://github.com/Adrestus-net/Adrestus</url>
+  <url>https://github.com/PanagiotisDrakatos/VDF4J</url>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/PanagiotisDrakatos/VDF4J/issues</url>
+  </issueManagement>
+  <inceptionYear>2025</inceptionYear>
   <developers>
     <developer>
       <id>p4n4gi07is</id>
@@ -25,6 +30,11 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <scm>
+    <connection>scm:git:git://github.com/PanagiotisDrakatos/VDF4J.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/PanagiotisDrakatos/VDF4J.git</developerConnection>
+    <url>https://github.com/PanagiotisDrakatos/VDF4J/</url>
+  </scm>
   <build>
     <resources>
       <resource>
@@ -100,35 +110,24 @@
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.2</version>
+        <configuration>
+          <includes>
+            <include>**/resources/*</include>
+          </includes>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <executions>
           <execution>
-            <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
             <configuration>
               <transformers>
                 <transformer />
-                <transformer />
               </transformers>
-              <filters>
-                <filter>
-                  <artifact>*:*</artifact>
-                  <excludes>
-                    <exclude>META-INF/**</exclude>
-                    <exclude>INFO/**</exclude>
-                    <exclude>asm:*</exclude>
-                    <exclude>META-INF/*.MF</exclude>
-                    <exclude>META-INF/*.SF</exclude>
-                    <exclude>META-INF/*.DSA</exclude>
-                    <exclude>META-INF/*.RSA</exclude>
-                    <exclude>META-INF/versions/21/**</exclude>
-                  </excludes>
-                </filter>
-              </filters>
             </configuration>
           </execution>
         </executions>
@@ -163,6 +162,18 @@
       </exclusions>
     </dependency>
   </dependencies>
+  <distributionManagement>
+    <repository>
+      <id>sonatype-nexus-staging</id>
+      <name>Nexus Release Repository</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
   <properties>
     <lang.version>3.17.0</lang.version>
     <guava.version>33.4.0-jre</guava.version>
