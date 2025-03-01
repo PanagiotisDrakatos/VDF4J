@@ -67,16 +67,19 @@ network environment.
 
 ## Introduction
 
-**VDF4J** is a Java-based **Verifiable Delay Function** (VDF) implementation, developed primarily for **educational and research** purposes for Adrestus cryptocurrency project.
-Part of the code is forked from previous libraries that failed to provide consistent and robust functionality, resulting in memory leaks and significant issues on the JVM.
-VDFs require a predetermined amount of **sequential** time to compute yet are very fast to verify, making them attractive for use cases like **blockchain consensus**, **randomness beacons**, and **anti-front-running measures**.
+**VDF4J** is a Java-based **Verifiable Delay Function** (VDF) implementation, developed primarily for **educational and
+research** purposes for Adrestus cryptocurrency project.
+Part of the code is forked from previous libraries that failed to provide consistent and robust functionality, resulting
+in memory leaks and significant issues on the JVM.
+VDFs require a predetermined amount of **sequential** time to compute yet are very fast to verify, making them
+attractive for use cases like **blockchain consensus**, **randomness beacons**, and **anti-front-running measures**.
 
 ---
 
 ## What Is a Verifiable Delay Function (VDF)?
 
-This VDF implementation is written in Java. The GMP library is used for arithmetic and greatest common divisor (GCD) 
-calculations. We use class groups to implement the 
+This VDF implementation is written in Java. The GMP library is used for arithmetic and greatest common divisor (GCD)
+calculations. We use class groups to implement the
 approaches described in the following papers:
 
 1. <a href="https://eprint.iacr.org/2018/627.pdf">Simple Verifiable Delay Functions</a> Pietrzak, 2018.
@@ -84,15 +87,18 @@ approaches described in the following papers:
 
 A Verifiable Delay Function (VDF) is a function that:
 
-1. **Takes a certain minimum amount of time to compute** (no matter how many parallel processors you have, it cannot be computed faster than some specified minimum time).
+1. **Takes a certain minimum amount of time to compute** (no matter how many parallel processors you have, it cannot be
+   computed faster than some specified minimum time).
 2. **Generates a proof** that the output is correct.
 3. **Allows very rapid verification** of that proof, much faster than the time taken to compute the original function.
 
-In practice, VDFs use repeated or iterative 
+In practice, VDFs use repeated or iterative
 cryptographic operations (often exponentiation in a
-group with specific properties). The verification step 
-uses cryptographic checks that confirm the original 
-computation was done correctly. By introducing a time delay during evaluation, VDFs prevent malicious actors from influencing output. The output cannot be differentiated from a random number until the final result is computed. See https://eprint.iacr.org/2018/712.pdf for more details.
+group with specific properties). The verification step
+uses cryptographic checks that confirm the original
+computation was done correctly. By introducing a time delay during evaluation, VDFs prevent malicious actors from
+influencing output. The output cannot be differentiated from a random number until the final result is computed.
+See https://eprint.iacr.org/2018/712.pdf for more details.
 
 ---
 
@@ -103,11 +109,13 @@ computation was done correctly. By introducing a time delay during evaluation, V
 [//]: # ([1.3.0]&#40;https://github.com/google/jimfs/releases/tag/v1.3.0&#41;.)
 
 [//]: # ()
+
 [//]: # (It is available in Maven Central as)
 
 [//]: # ([com.google.jimfs:jimfs:1.3.0]&#40;http://search.maven.org/#artifactdetails%7Ccom.google.jimfs%7Cjimfs%7C1.3.0%7Cjar&#41;:)
 
 [//]: # ()
+
 [//]: # (```xml)
 
 [//]: # (<dependency>)
@@ -122,7 +130,8 @@ computation was done correctly. By introducing a time delay during evaluation, V
 
 [//]: # (```)
 
-## Java Example Code 
+## Java Example Code
+
 ```java
 public class ExamplesTest {
     private static byte[] challenge;
@@ -148,13 +157,17 @@ public class ExamplesTest {
     }
 }
 ```
+
 ## Project Goals
 
-1. **Illustrate VDF Principles**: Help developers and researchers understand the *mechanics* behind a verifiable delay function.
+1. **Illustrate VDF Principles**: Help developers and researchers understand the *mechanics* behind a verifiable delay
+   function.
 2. **Educational Resource**: Provide a clear, well-structured Java codebase as a learning tool.
-3. **Modular Implementation**: Lay the groundwork so contributors can improve or adapt VDF logic for different use cases (blockchains, cryptographic protocols, etc.).
+3. **Modular Implementation**: Lay the groundwork so contributors can improve or adapt VDF logic for different use
+   cases (blockchains, cryptographic protocols, etc.).
 
-> **Important**: This implementation is intended for demonstration. It may not have production-grade security optimizations.
+> **Important**: This implementation is intended for demonstration. It may not have production-grade security
+> optimizations.
 
 ---
 
@@ -170,7 +183,8 @@ public class ExamplesTest {
   The Maven configuration file that defines build dependencies and plugins.
 
 - **appveyor.yml**  
-  Potential integration/build instructions for *AppVeyor* continuous integration (not always used in Java projects, but can be adapted).
+  Potential integration/build instructions for *AppVeyor* continuous integration (not always used in Java projects, but
+  can be adapted).
 
 - **dependency-reduced-pom.xml**  
   An auxiliary Maven file generated during shading/assembly processes.
@@ -186,6 +200,7 @@ public class ExamplesTest {
 ## Build & Run Instructions
 
 ### Prerequisites
+
 - **Java 8** or higher
 - **Maven** (3.x or newer) or any other environment that can handle a Maven project
 
@@ -200,22 +215,26 @@ public class ExamplesTest {
    ```bash
    mvn clean install
 3. **Run Demo Example (If Provided):**
+
   ```bash
    mvn exec:java -Dexec.mainClass="com.example.vdf.Main"
    ```
-   Replace com.example.vdf.Main with the actual main class path from the repository. 
-   This example shows how you might launch a test or demonstration of the VDF functionality.
 
+Replace com.example.vdf.Main with the actual main class path from the repository.
+This example shows how you might launch a test or demonstration of the VDF functionality.
 
 ## Building Native Library
-Below are instructions for building the libgmp library 
+
+Below are instructions for building the libgmp library
 that ships with this module
 
 #### Linux
 
 There is an included Dockerfile that can be used to compile libgmp with
 
-First build the Docker image. Navigate to the <a href="https://github.com/PanagiotisDrakatos/VDF4J/tree/master/src/nativeCode" title="nativeCode lifestyles">nativeCode</a> folder of the project and run the following command:
+First build the Docker image. Navigate to
+the <a href="https://github.com/PanagiotisDrakatos/VDF4J/tree/master/src/nativeCode" title="nativeCode lifestyles">
+nativeCode</a> folder of the project and run the following command:
 
     docker build -t jnagmp-linux-x86-64 -f linux-x86-64.dockerfile .
 
@@ -227,6 +246,7 @@ _src/main/resources_
 #### Windows
 
 ## 1 Option: Using cygwin
+
 ### Prerequisites
 
 - **Operating System**: Windows 7 or later (32-bit or 64-bit).
@@ -242,7 +262,8 @@ _src/main/resources_
     - `setup-x86_64.exe` for 64-bit Windows
     - `setup-x86.exe` for 32-bit Windows
 
-> **Tip**: If you’re unsure of your system architecture, press `Windows Key + Pause/Break` to open system properties and check your system type.
+> **Tip**: If you’re unsure of your system architecture, press `Windows Key + Pause/Break` to open system properties and
+> check your system type.
 
 ---
 
@@ -256,10 +277,12 @@ _src/main/resources_
 
 ### Select Packages
 
-1. **i686-w64-mingw32-gcc**: For 32-bit Windows applications. Not exist on packet manger run version command to check it on
-  cygwin
-2. **x86_64-w64-mingw32-gcc**: For 64-bit Windows applications. Not exist on packet manger run version command to check it on
-  cygwin
+1. **i686-w64-mingw32-gcc**: For 32-bit Windows applications. Not exist on packet manger run version command to check it
+   on
+   cygwin
+2. **x86_64-w64-mingw32-gcc**: For 64-bit Windows applications. Not exist on packet manger run version command to check
+   it on
+   cygwin
 
 3. **mingw64-i686-gcc-g++** - The GNU Compiler Collection (C++ compiler). For 32-bit Windows applications.
 4. **mingw64-x86_64-gcc-g++** - The GNU Compiler Collection (C++ compiler). For 64-bit Windows applications.
@@ -291,71 +314,84 @@ Navigate to the directory where you want to install run commands
 Runs the following command to compile the library
 
      cd gmp-6.3.0
+
 Run the following command to compile the library
 
     ./configure --disable-static --enable-shared --host=x86_64-w64-mingw32
+
 OR This command
 
      make -f WindowsMakefile.libgmp install
-Then run the following command to move the files into the resources folder that the program reads 
-     
+
+Then run the following command to move the files into the resources folder that the program reads
+
     mv libgmp-10.dll libgmp.dll
 
 ## How It Works
 
 ### Core Concept
+
 1. **Input / Setup:**
 
-   - A challenge input (typically an integer, group element, or random data) is prepared.
-   - System parameters (e.g., group modulus for repeated squaring, number of iterations, etc.) 
-     are established.
+    - A challenge input (typically an integer, group element, or random data) is prepared.
+    - System parameters (e.g., group modulus for repeated squaring, number of iterations, etc.)
+      are established.
 2. **Iterated Computation:**
-     - The VDF function in this repository likely uses an iterative exponentiation or repeated squaring 
-        approach— repeated many times to enforce a real-world time delay.
-     - Due to the nature of exponentiation in large number fields, parallelization beyond a certain 
-       point doesn’t help reduce the overall sequential time.
+    - The VDF function in this repository likely uses an iterative exponentiation or repeated squaring
+      approach— repeated many times to enforce a real-world time delay.
+    - Due to the nature of exponentiation in large number fields, parallelization beyond a certain
+      point doesn’t help reduce the overall sequential time.
 3. **Output + Proof:**
-   - After the heavy sequential computation, the 
-   function returns a result plus a cryptographic 
-   proof of correctness (often involving repeated 
-   squaring proofs or isogenies, depending on the chosen VDF approach).
-   Computation Delay
-### Computation Delay
-   - The key to a VDF is that computing the output 
-    from the input must take at least t steps
-    (each step depends on the previous step’s result).
+    - After the heavy sequential computation, the
+      function returns a result plus a cryptographic
+      proof of correctness (often involving repeated
+      squaring proofs or isogenies, depending on the chosen VDF approach).
+      Computation Delay
 
-   - Even with many parallel processors, you cannot skip or batch these steps because each iteration relies on the output of the previous iteration.
-   Proof Generation & Verification
 ### Computation Delay
-   - **Proof**: Typically involves additional
-     math that allows an observer to quickly confirm 
-     that you actually performed all t steps.
-   - **Verification**: By using cryptographic 
-     checks (like checking an exponent or some tricky
-     modular arithmetic property), the proof is 
-     validated in log(t) or similarly small complexity.
+
+- The key to a VDF is that computing the output
+  from the input must take at least t steps
+  (each step depends on the previous step’s result).
+
+- Even with many parallel processors, you cannot skip or batch these steps because each iteration relies on the output
+  of the previous iteration.
+  Proof Generation & Verification
+
+### Computation Delay
+
+- **Proof**: Typically involves additional
+  math that allows an observer to quickly confirm
+  that you actually performed all t steps.
+- **Verification**: By using cryptographic
+  checks (like checking an exponent or some tricky
+  modular arithmetic property), the proof is
+  validated in log(t) or similarly small complexity.
 
 ## Limitations & Future Work
 
 1. **Security Hardening:**
-For real-world usage, consider larger parameters or proven secure group settings (e.g., class groups, pairing-friendly curves, incremental exponentiation in large prime fields, etc.).
+   For real-world usage, consider larger parameters or proven secure group settings (e.g., class groups,
+   pairing-friendly curves, incremental exponentiation in large prime fields, etc.).
 2. **Performance Tuning:**
-The Java code works for a demonstration; you may want advanced libraries or native bindings for enhanced big-integer arithmetic.
+   The Java code works for a demonstration; you may want advanced libraries or native bindings for enhanced big-integer
+   arithmetic.
 3. **Expand Proof Options:**
-Different VDF constructions exist (e.g., Wesolowski’s proof, Pietrzak’s proof). This project could implement or compare multiple proof schemes.
+   Different VDF constructions exist (e.g., Wesolowski’s proof, Pietrzak’s proof). This project could implement or
+   compare multiple proof schemes.
 4. **Benchmarking:**
-Adding thorough benchmarks to measure performance under various iteration counts, machine architectures, or concurrency scenarios would be beneficial.
+   Adding thorough benchmarks to measure performance under various iteration counts, machine architectures, or
+   concurrency scenarios would be beneficial.
 
-5.  **Integration with Other Projects:**
-Useful for demonstrating real ownership or usage in blockchains or distributed systems needing
-delayed computations
+5. **Integration with Other Projects:**
+   Useful for demonstrating real ownership or usage in blockchains or distributed systems needing
+   delayed computations
 
 ## Legal Warning
+
 While this may be helpful for some, there are significant risks. VDF4J may be used only for
 Educational Purposes. Do not use it as a ransomware! You could go to jail if if you will use it for
 malicious purposes.<
-
 
 ## Support
 
@@ -383,8 +419,8 @@ I'd really appreciate it!
 
 - [@panagiotisdrakatos](https://github.com/PanagiotisDrakatos)
 
-
 # Contribute
+
 1. Fork it: git clone https://github.com/PanagiotisDrakatos/VDF4J.git
 2. Create your feature branch: git checkout -b my-new-feature
 3. Commit your changes: git commit -am 'Add some feature'
@@ -392,6 +428,7 @@ I'd really appreciate it!
 5. Submit a pull request :D
 
 # License
+
 This project is distributed under the MIT license version 2.0 (see the LICENSE file in the project root).
 
 By submitting a pull request to this project, you agree to license your contribution under the MIT license version 2.0

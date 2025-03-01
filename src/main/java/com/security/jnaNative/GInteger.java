@@ -7,6 +7,7 @@ import java.util.Random;
 public class GInteger extends BigInteger {
 
     private static final long serialVersionUID = 1L;
+
     public GInteger(BigInteger other) {
         super(other.toByteArray());
     }
