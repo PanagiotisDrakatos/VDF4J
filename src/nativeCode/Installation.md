@@ -49,7 +49,7 @@ Make sure you have the following run:
 
 Navigate to the directory where you want to install run commands
 
-    cd /cygdrive/c/Users/User/Documents/GitHub/Adrestus/adrestus-shared-resources
+cd /cygdrive/c/Users/User/mypath...
 
 Runs the following command to compile the library
 
@@ -58,14 +58,3 @@ Runs the following command to compile the library
      OR
      make -f WindowsMakefile.libgmp install
      mv libgmp-10.dll libgmp.dll
-
-## 1 OPTION: Using Windows Docker machine
-
-First build the Docker image
-
-    docker build -t jnagmp-windows-x86-64 -f win32.dockerfile .
-
-Next run the Docker image which will execute the [Makefile](Makefile.libgmp) and output the compiled library in to
-_src/main/resources_
-
-    docker run -v "$(pwd)/src/main/resources:/build/src/main/resources" -t jnagmp-windows-x86-64
