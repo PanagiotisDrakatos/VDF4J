@@ -48,9 +48,9 @@ services:
 
 stack: jdk 21
 build_script:
-  - mvn clean install -U
+  - mvn clean install -Dgpg.skip -P central-publishing
 test_script:
-  - mvn clean install -U
+  - mvn clean install -Dgpg.skip -P central-publishing
 after_test:
   - ps: |
       curl -s https://codecov.io/bash | bash -s - -t 1d910d2b-5749-4c90-bc7d-e8e4b3185606

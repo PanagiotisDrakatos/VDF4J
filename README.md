@@ -51,6 +51,8 @@ network environment.
 6. [Directory Structure](#directory-structure)
 7. [Build & Run Instructions](#build--run-instructions)
 8. [Building Native Library](#building-native-library)
+    - [Linux Concept](#linux-concept)
+    - [Windows Concept](#windows-concept)
 9. [How It Works](#how-it-works)
     - [Core Concept](#core-concept)
     - [Computation Delay](#computation-delay)
@@ -104,31 +106,23 @@ See https://eprint.iacr.org/2018/712.pdf for more details.
 
 ## Getting started
 
-[//]: # (The latest release is)
+The latest release is: [0.1.1](https://central.sonatype.com/artifact/io.github.l16h7n1n6s/VDF4J).
 
-[//]: # ([1.3.0]&#40;https://github.com/google/jimfs/releases/tag/v1.3.0&#41;.)
+It is available in Maven Central
+as: [com.security.VDF4J:VDF4J:0.1.1](https://central.sonatype.com/artifact/io.github.l16h7n1n6s/VDF4J):
 
-[//]: # ()
+JDK [21](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html) is required to build and run this
+project.
 
-[//]: # (It is available in Maven Central as)
+```xml
 
-[//]: # ([com.google.jimfs:jimfs:1.3.0]&#40;http://search.maven.org/#artifactdetails%7Ccom.google.jimfs%7Cjimfs%7C1.3.0%7Cjar&#41;:)
+<dependency>
+    <groupId>io.github.l16h7n1n6s</groupId>
+    <artifactId>VDF4J</artifactId>
+    <version>0.1.1</version>
+</dependency>
 
-[//]: # ()
-
-[//]: # (```xml)
-
-[//]: # (<dependency>)
-
-[//]: # (  <groupId>com.google.jimfs</groupId>)
-
-[//]: # (  <artifactId>jimfs</artifactId>)
-
-[//]: # (  <version>1.3.0</version>)
-
-[//]: # (</dependency>)
-
-[//]: # (```)
+```
 
 ## Java Example Code
 
@@ -210,15 +204,16 @@ public class ExamplesTest {
    ```bash
    git clone https://github.com/PanagiotisDrakatos/VDF4J.git
    cd VDF4J
-1. **Build via Maven:**
+   ```
+2. **Build via Maven:**
    This will compile the project and run any included tests.
    ```bash
    mvn clean install
-3. **Run Demo Example (If Provided):**
-
-  ```bash
-   mvn exec:java -Dexec.mainClass="com.example.vdf.Main"
    ```
+3. **Run Demo Example (If Provided):**
+    ```bash
+    mvn -Dtest=MyTest ExamplesTest test
+    ```
 
 Replace com.example.vdf.Main with the actual main class path from the repository.
 This example shows how you might launch a test or demonstration of the VDF functionality.
@@ -228,7 +223,7 @@ This example shows how you might launch a test or demonstration of the VDF funct
 Below are instructions for building the libgmp library
 that ships with this module
 
-#### Linux
+### 1.0 Linux
 
 There is an included Dockerfile that can be used to compile libgmp with
 
@@ -243,9 +238,11 @@ _src/main/resources_
 
     docker run -v "$(pwd)/src/main/resources:/build/src/main/resources" -t jnagmp-linux-x86-64
 
-#### Windows
+After running the above command, the compiled library will be available in the resources folder.
 
-## 1 Option: Using cygwin
+### 2.0 Windows
+
+#### 1 Option: Using cygwin
 
 ### Prerequisites
 
@@ -275,7 +272,7 @@ _src/main/resources_
 
 ---
 
-### Select Packages
+### Select Packages to install from Cygwin
 
 1. **i686-w64-mingw32-gcc**: For 32-bit Windows applications. Not exist on packet manger run version command to check it
    on
@@ -319,7 +316,7 @@ Run the following command to compile the library
 
     ./configure --disable-static --enable-shared --host=x86_64-w64-mingw32
 
-OR This command
+Or better run this command to compile the library from a ready to use Makefile fro windows
 
      make -f WindowsMakefile.libgmp install
 
@@ -390,8 +387,8 @@ Then run the following command to move the files into the resources folder that 
 ## Legal Warning
 
 While this may be helpful for some, there are significant risks. VDF4J may be used only for
-Educational Purposes. Do not use it as a ransomware! You could go to jail if if you will use it for
-malicious purposes.<
+Educational Purposes. Do not use it for illegal purposes! You could go to jail if if you will use it for
+malicious purposes.
 
 ## Support
 
@@ -410,22 +407,14 @@ I'd really appreciate it!
 ## Contribute
 
 1. Fork it: git clone https://github.com/PanagiotisDrakatos/VDF4J.git
-2. Create your feature branch: git checkout -b my-new-feature
-3. Commit your changes: git commit -am 'Add some feature'
-4. Push to the branch: git push origin my-new-feature
-5. Submit a pull request :D
+2. Create your feature branch: ```git checkout -b my-new-feature```
+3. Commit your changes: ```git commit -am 'Add some feature'```
+4. Push to the branch: ```git push origin my-new-feature```
+5. Submit a pull request
 
 ## Authors
 
 - [@panagiotisdrakatos](https://github.com/PanagiotisDrakatos)
-
-# Contribute
-
-1. Fork it: git clone https://github.com/PanagiotisDrakatos/VDF4J.git
-2. Create your feature branch: git checkout -b my-new-feature
-3. Commit your changes: git commit -am 'Add some feature'
-4. Push to the branch: git push origin my-new-feature
-5. Submit a pull request :D
 
 # License
 
